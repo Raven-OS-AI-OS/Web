@@ -5,15 +5,19 @@
   const intro = document.querySelector('#intro');
   const introVideo = document.querySelector('#intro-video');
   const loadingAudio = document.querySelector('#loading-audio');
+  const enableSound = document.querySelector('#enable-sound');
   const skipIntro = document.querySelector('#skip-intro');
   const siteShell = document.querySelector('#site-shell');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let introClosed = false;
+  let audioNeedsGesture = false;
 
   body.classList.add('intro-active');
 
   function startLoadingAudio() {
-    loadingAudio.play().catch(() => {
+    return loadingAudio.play().catch(() => {
+      audioNeedsGesture = true;
+      enableSound.hidden = false;
       const resumeAudio = () => {
         loadingAudio.play().catch(() => {});
         window.removeEventListener('pointerdown', resumeAudio);
@@ -26,6 +30,12 @@
 
   startLoadingAudio();
 
+  enableSound.addEventListener('click', () => {
+    loadingAudio.play().catch(() => {});
+    audioNeedsGesture = false;
+    enableSound.hidden = true;
+  });
+
   function closeIntro() {
     if (introClosed) return;
     introClosed = true;
@@ -35,7 +45,14 @@
     window.setTimeout(() => intro.setAttribute('aria-hidden', 'true'), 750);
   }
 
-  skipIntro.addEventListener('click', closeIntro);
+  skipIntro.addEventListener('click', () => {
+    if (audioNeedsGesture) {
+      loadingAudio.play().catch(() => {});
+      audioNeedsGesture = false;
+      enableSound.hidden = true;
+    }
+    closeIntro();
+  });
   introVideo.addEventListener('ended', closeIntro);
   introVideo.addEventListener('error', closeIntro);
   window.setTimeout(closeIntro, 11000);
