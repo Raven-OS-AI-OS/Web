@@ -226,21 +226,23 @@
           <p>Direction, not promises. The roadmap shows where contributors can have the greatest impact.</p>
         </div>
         <div class="timeline">
-          <div class="timeline__line" aria-hidden="true"><span></span></div>
-          <article class="timeline-item timeline-item--active reveal">
+          <div class="timeline__line" aria-hidden="true">
+             <span style="width: 50%"></span>
+           </div>
+          <article class="timeline-item reveal">
             <div class="timeline-item__node">01</div>
             <div class="timeline-item__body"><span>PHASE 01 · NOW</span>
               <h3>Stable foundation</h3>
               <p>Harden the live image, unify branding, document builds, automate smoke tests, and establish release
-                checksums.</p><small><i></i> IN PROGRESS</small>
+                checksums.</p><small>DONE</small>
             </div>
           </article>
-          <article class="timeline-item reveal">
+          <article class="timeline-item timeline-item--active reveal">
             <div class="timeline-item__node">02</div>
             <div class="timeline-item__body"><span>PHASE 02 · NEXT</span>
               <h3>Developer core</h3>
               <p>Reproducible development environments, containers, Python tooling, notebooks, and a dependable package
-                baseline.</p><small>PLANNED</small>
+                baseline.</p><small><i></i> IN PROGRESS</small>
             </div>
           </article>
           <article class="timeline-item reveal">
@@ -277,37 +279,52 @@
           <div class="repo-window__body">
             <div class="tree" role="list" aria-label="Repository directories">
               <button class="tree-row sound-target" type="button" data-detail="assets"
-                role="listitem"><span>⌄</span><b>▰</b><strong>assets/</strong><em>project artwork and branding</em></button>
+                role="listitem"><span>⌄</span><b>▰</b><strong>assets/</strong><em>project artwork and
+                  branding</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="branding"
-                role="listitem"><span>·</span><b>◆</b><strong>branding/</strong><em>repository documentation logos</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>branding/</strong><em>repository documentation
+                  logos</em></button>
               <button class="tree-row sound-target" type="button" data-detail="auto"
-                role="listitem"><span>·</span><b>▤</b><strong>auto/config</strong><em>reproducible live-build configuration</em></button>
+                role="listitem"><span>·</span><b>▤</b><strong>auto/config</strong><em>reproducible live-build
+                  configuration</em></button>
               <button class="tree-row sound-target" type="button" data-detail="config"
                 role="listitem"><span>⌄</span><b>▰</b><strong>config/</strong><em>image definition</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="boot"
-                role="listitem"><span>·</span><b>◆</b><strong>bootloaders/isolinux/</strong><em>live boot menu and theme</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>bootloaders/isolinux/</strong><em>live boot menu and
+                  theme</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="hooks"
-                role="listitem"><span>·</span><b>◆</b><strong>hooks/</strong><em>build-time compatibility hooks</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>hooks/</strong><em>build-time compatibility
+                  hooks</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="local-packages"
-                role="listitem"><span>·</span><b>◆</b><strong>local-packages/</strong><em>generated Raven packages</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>local-packages/</strong><em>generated Raven
+                  packages</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="package-lists"
-                role="listitem"><span>·</span><b>◆</b><strong>package-lists/</strong><em>Ubuntu packages for the image</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>package-lists/</strong><em>Ubuntu packages for the
+                  image</em></button>
               <button class="tree-row sound-target" type="button" data-detail="packages-root"
-                role="listitem"><span>⌄</span><b>▰</b><strong>packages/</strong><em>Raven-owned Debian packages</em></button>
+                role="listitem"><span>⌄</span><b>▰</b><strong>packages/</strong><em>Raven-owned Debian
+                  packages</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="customization"
-                role="listitem"><span>·</span><b>◆</b><strong>raven-customization/</strong><em>identity and desktop defaults</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>raven-customization/</strong><em>identity and desktop
+                  defaults</em></button>
               <button class="tree-row sound-target" type="button" data-detail="scripts"
-                role="listitem"><span>⌄</span><b>▰</b><strong>scripts/</strong><em>build, check, and recovery tools</em></button>
+                role="listitem"><span>⌄</span><b>▰</b><strong>scripts/</strong><em>build, check, and recovery
+                  tools</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="build-local"
-                role="listitem"><span>·</span><b>◆</b><strong>build-local-packages.sh</strong><em>build Raven Debian packages</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>build-local-packages.sh</strong><em>build Raven Debian
+                  packages</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="compatibility"
-                role="listitem"><span>·</span><b>◆</b><strong>check-compatibility.sh</strong><em>guard Ubuntu live-build settings</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>check-compatibility.sh</strong><em>guard Ubuntu live-build
+                  settings</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="resume"
-                role="listitem"><span>·</span><b>◆</b><strong>resume-build.sh</strong><em>recover interrupted builds</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>resume-build.sh</strong><em>recover interrupted
+                  builds</em></button>
               <button class="tree-row tree-row--child sound-target" type="button" data-detail="test"
-                role="listitem"><span>·</span><b>◆</b><strong>test-build.sh</strong><em>launch the ISO with QEMU/KVM</em></button>
+                role="listitem"><span>·</span><b>◆</b><strong>test-build.sh</strong><em>launch the ISO with
+                  QEMU/KVM</em></button>
               <button class="tree-row sound-target" type="button" data-detail="tests"
-                role="listitem"><span>·</span><b>▰</b><strong>tests/</strong><em>automated stability checks</em></button>
+                role="listitem"><span>·</span><b>▰</b><strong>tests/</strong><em>automated stability
+                  checks</em></button>
             </div>
             <aside class="file-detail" id="file-detail" aria-live="polite">
               <span>SELECTED NODE</span>
