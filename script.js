@@ -4,12 +4,27 @@
   const body = document.body;
   const intro = document.querySelector('#intro');
   const introVideo = document.querySelector('#intro-video');
+  const loadingAudio = document.querySelector('#loading-audio');
   const skipIntro = document.querySelector('#skip-intro');
   const siteShell = document.querySelector('#site-shell');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let introClosed = false;
 
   body.classList.add('intro-active');
+
+  function startLoadingAudio() {
+    loadingAudio.play().catch(() => {
+      const resumeAudio = () => {
+        loadingAudio.play().catch(() => {});
+        window.removeEventListener('pointerdown', resumeAudio);
+        window.removeEventListener('keydown', resumeAudio);
+      };
+      window.addEventListener('pointerdown', resumeAudio, { once: true });
+      window.addEventListener('keydown', resumeAudio, { once: true });
+    });
+  }
+
+  startLoadingAudio();
 
   function closeIntro() {
     if (introClosed) return;
@@ -164,14 +179,22 @@
   });
 
   const detailData = {
-    config: ['config/', 'The central live-build definition: boot UI, build hooks, target filesystem content, and package selection.'],
+    assets: ['assets/', 'Project-level artwork and branding used by repository documentation.'],
+    branding: ['branding/', 'Logos and visual assets used by the repository documentation.'],
+    config: ['config/', 'The live-build definition: boot UI, build hooks, generated packages, and package selection.'],
     boot: ['bootloaders/isolinux/', 'Syslinux/Isolinux configuration for the branded live and failsafe boot options.'],
     hooks: ['hooks/', 'Non-interactive scripts that repair compatibility and customize the target system during a build.'],
-    includes: ['includes.chroot/', 'Files copied directly into the live filesystem, including identity, desktop settings, icons, and backgrounds.'],
-    packages: ['package-lists/', 'The source of truth for software installed into the current XFCE live image.'],
+    'local-packages': ['local-packages/', 'Generated Raven-owned Debian packages installed into the live image by a build hook.'],
+    'package-lists': ['package-lists/', 'The source of truth for Ubuntu software installed into the live image.'],
+    'packages-root': ['packages/', 'Source trees for Raven-owned Debian packages.'],
+    customization: ['raven-customization/', 'The Raven identity package: artwork, desktop defaults, and shell configuration.'],
     auto: ['auto/config', 'Reproducible Ubuntu Noble, amd64, mirror, kernel, bootloader, and ISO options passed to live-build.'],
+    scripts: ['scripts/', 'Build, compatibility, packaging, ISO, and recovery utilities.'],
+    'build-local': ['build-local-packages.sh', 'Builds the Raven-owned Debian customization package from its source tree.'],
+    compatibility: ['check-compatibility.sh', 'Checks that generated live-build settings still target Ubuntu Noble and Casper.'],
     resume: ['resume-build.sh', 'A narrowly scoped recovery helper for known interrupted bootstrap, chroot, and Syslinux build states.'],
-    test: ['test-build.sh', 'Starts binary.hybrid.iso in QEMU with KVM, four virtual CPUs, and 4 GB of memory.']
+    test: ['test-build.sh', 'Starts binary.hybrid.iso in QEMU with KVM, four virtual CPUs, and 4 GB of memory.'],
+    tests: ['tests/', 'Fast automated checks for shell syntax, package layering, reproducibility, and boot paths.']
   };
   const fileDetail = document.querySelector('#file-detail');
   document.querySelectorAll('.tree-row').forEach(row => {
